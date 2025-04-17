@@ -1,4 +1,4 @@
-const API_KEY = '96c3923ca949284db2bfdfd20d8d948b'
+const API_KEY = 'cebcd482eda57fa9a6714c1c2ba91885'
 
 
 const elIconWeather = document.getElementById('icon-weather')
