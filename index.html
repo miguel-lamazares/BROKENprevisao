@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Será que chove em xique-xique?</title>
+
+    <!--icon-->
+    <link rel="icon" href="./IMG/27e0d831-8ed5-4304-9bda-e899696b88f4 (1).png">
+
+    <!--fonte-->
+
+    <!--gothic-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One&display=swap" rel="stylesheet">
+    <!--Poppins-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!--icons-->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!--animações-->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+
+    <!--css-->
+    <link rel="stylesheet" href="./CSS/global.css">
+
+
+</head>
+
+<body>
+    <span class="background">
+
+    </span>
+    <div class="card">
+        <form>
+            <div>
+                <i class="ph ph-map-pin"></i>
+                <input type="text" placeholder="Digite o nome da cidade" required>
+            </div>
+
+            <button type="submit">
+                <i class="ph ph-magnifying-glass"></i>
+            </button>
+        </form>
+
+        <main>
+            <img id="icon-weather" src="./IMG/meu-saco.com/clear.png" alt="">
+            <h1 id="temperature">-2ºC</h1>
+            <h2 id="local">alemanha</h2>
+        </main>
+
+        <footer>
+            <div class="block">
+                <i class="ph ph-drop-half-bottom"></i>
+                <div>
+                    <strong id="humidity">78%</strong>
+                    <p>Umidade</p>
+                </div>
+            </div>
+
+            <div class="block">
+                <i class="ph ph-wind"></i>
+                <div>
+                    <strong id="speed-wind">18 km/h</strong>
+                    <p>Vel. do vento</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <script src="./JS/script.js"></script>
+</body>
+
+</html>
