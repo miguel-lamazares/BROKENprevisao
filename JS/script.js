@@ -10,16 +10,16 @@ const elCard = document.querySelector('.card')
 
 
 function getData(local) {
-    const route = `https://api.openweathermap.org/data/2.5/weather?q=${local}&lang=pt_br&units=metric&appid=${API_KEY}`
+    const route = `https://api.openweathermap.org/data/2.5/weather?q=${local}&appid=${API_KEY}`
     return fetch(route).then(response => response.json())
 }
 
 function loadInformation() {
     getData(value).then(data => {
         console.log(data);
-        if (data.cod === '404') {
-            elCard.classList.remove('active')
-            return
+        if (data.cod === 404) {
+            elCard.classList.remove('active');
+            return;
         }
         elCard.classList.add('active')
 
@@ -37,35 +37,37 @@ function loadInformation() {
     })
 }
 function heandleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
+
+    const value = document.querySelector('[name="local"]').value
 
     fadeOut()
 
-    const value = document.querySelector('[name="local"]').value
+    
 
 
 }
 function fadeIn() {
-    const timeLine = gsap.timeLine()
-    const reset = { y: -50 }
-    const animaEntrada = { y: 0, duration: 0.4, opacity: 0, ease: 'back' }
+    const timeLine = gsap.timeline();
+    const reset = { y: -50 };
+    const animaEntrada = { y: 0, duration: 0.4, opacity: 0, ease: 'back' };
 
 
-    timeLine.fromTo('footer', reset, animaEntrada)
-    timeLine.fromTo('#local', reset, animaEntrada, 0.1)
-    timeLine.fromTo('#temperature', reset, animaEntrada, 0.2)
-    timeLine.fromTo('#icon-weather', reset, animaEntrada, 0.3)
+    timeLine.fromTo('footer', reset, animaEntrada);
+    timeLine.fromTo('#local', reset, animaEntrada, 0.1);
+    timeLine.fromTo('#temperature', reset, animaEntrada, 0.2);
+    timeLine.fromTo('#icon-weather', reset, animaEntrada, 0.3);
 }
 
 
 function fadeOut() {
-    const timeLine = gsap.timeLine({ onComplete: loadInformation })
-    const animaSaida = { y: 50, duration: 0.4, opacity: 0, ease: 'slow' }
+    const timeLine = gsap.timeline({ onComplete: loadInformation });
+    const animaSaida = { y: 50, duration: 0.4, opacity: 0, ease: 'slow' };
 
-    timeLine.to('#icon-weather', animaSaida)
-    timeLine.to('#temperature', animaSaida, 0.1)
-    timeLine.to('#local', animaSaida, 0.2)
-    timeLine.to('footer', animaSaida, 0.3)
+    timeLine.to('#icon-weather', animaSaida);
+    timeLine.to('#temperature', animaSaida, 0.1);
+    timeLine.to('#local', animaSaida, 0.2);
+    timeLine.to('footer', animaSaida, 0.3);
 }
 
 
