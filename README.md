@@ -1,4 +1,4 @@
-# 🌤️ Weather App – Project using HTML, CSS, and JavaScript  
+# (broken)🌤️ Weather App – Project using HTML, CSS, and JavaScript  
 This is my Weather Forecast website built with HTML, CSS, and JavaScript, using the **OpenWeatherMap API** to fetch real-time weather data. The goal was to practice API integration, DOM manipulation, and improve UI/UX with icons and animations.
 
 ## 🔍 Features  
