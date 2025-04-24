@@ -1,77 +1,79 @@
-const API_KEY = 'cebcd482eda57fa9a6714c1c2ba91885'
+const API_KEY = 'cebcd482eda57fa9a6714c1c2ba91885';
 
-
-const elIconWeather = document.getElementById('icon-weather')
-const elTemperature = document.getElementById('temperature')
-const elLocal = document.getElementById('local')
-const elHumidity = document.getElementById('humidity')
-const elSpeedWind = document.getElementById('speed-wind')
-const elCard = document.querySelector('.card')
-
+const elIconWeather = document.getElementById('icon-weather');
+const elTemperature = document.getElementById('temperature');
+const elLocal = document.getElementById('local');
+const elHumidity = document.getElementById('humidity');
+const elSpeedWind = document.getElementById('speed-wind');
+const elCard = document.querySelector('.card');
 
 function getData(local) {
-    const route = `https://api.openweathermap.org/data/2.5/weather?q=${local}&appid=${API_KEY}`
-    return fetch(route).then(response => response.json())
+    const route = `https://api.openweathermap.org/data/2.5/weather?q=${local}&appid=${API_KEY}&units=metric`; 
+    console.log(`URL da API: ${route}`);  // Verificando se a URL está certa
+    return fetch(route)
+        .then(response => response.json())
+        .then(data => {
+            console.log("Resposta da API:", data); // Exibe a resposta para ver o que está chegando
+            return data;
+        });
 }
 
-function loadInformation() {
+function loadInformation(value) {
     getData(value).then(data => {
-        console.log(data);
-        if (data.cod === 404) {
+        if (!data || data.cod === 404) {
+            console.log("Cidade não encontrada ou resposta inválida!");  // Erro de cidade não encontrada
             elCard.classList.remove('active');
             return;
         }
-        elCard.classList.add('active')
+        
+        console.log("Cidade encontrada:", data.name);  // Confirmando cidade encontrada
+        elCard.classList.add('active');  // Adiciona a classe "active" à card
 
-        elTemperature.innerHTML = Math.floor(data.main.temp) + '°C'
-        elLocal.innerHTML = data.name
-        elHumidity.innerHTML = data.main.humidity + '%'
-        elSpeedWind.innerHTML = data.wind.speed + ' km/h'
+        // Atualiza os dados de clima
+        elTemperature.innerHTML = Math.floor(data.main.temp) + '°C';
+        elLocal.innerHTML = data.name;
+        elHumidity.innerHTML = data.main.humidity + '%';
+        elSpeedWind.innerHTML = data.wind.speed + ' km/h';
 
-        const icon = data.weather[0].main.toLocaleLowerCase()
-        const src = `./IMG/meu-saco.com/${icon}.png`
-        elIconWeather.setAttribute('src', src)
-
-        fedeIn()
-
-    })
+        // Ajustando o ícone do clima
+        const icon = data.weather[0].main.toLocaleLowerCase();
+        const src = `./IMG/meu-saco.com/${icon}.png`;
+        elIconWeather.setAttribute('src', src);
+        
+        // Removendo animação por enquanto para simplificar
+        fadeIn();  // Se necessário, depois podemos adicionar animação novamente
+    }).catch(error => {
+        console.log("Erro ao chamar a API:", error);  // Em caso de erro de rede ou outro erro
+    });
 }
-function heandleSubmit(event) {
+
+function handleSubmit(event) {
     event.preventDefault();
+    const value = document.querySelector('input[type="text"]').value;
 
-    const value = document.querySelector('[name="local"]').value
+    // Verificando se o campo de entrada está vazio
+    if (!value) {
+        console.log("Campo de cidade vazio!");  // Se o campo estiver vazio, retorna
+        return;
+    }
 
-    fadeOut()
-
-    
-
-
+    fadeOut(value);  // Passa o valor para fadeOut para carregar as informações
 }
+
 function fadeIn() {
-    const timeLine = gsap.timeline();
-    const reset = { y: -50 };
-    const animaEntrada = { y: 0, duration: 0.4, opacity: 0, ease: 'back' };
-
-
-    timeLine.fromTo('footer', reset, animaEntrada);
-    timeLine.fromTo('#local', reset, animaEntrada, 0.1);
-    timeLine.fromTo('#temperature', reset, animaEntrada, 0.2);
-    timeLine.fromTo('#icon-weather', reset, animaEntrada, 0.3);
+    // Removendo animações complexas por enquanto
+    elCard.style.opacity = 1;
+    elCard.style.transition = 'opacity 0.4s ease-in-out';
 }
 
-
-function fadeOut() {
-    const timeLine = gsap.timeline({ onComplete: loadInformation });
-    const animaSaida = { y: 50, duration: 0.4, opacity: 0, ease: 'slow' };
-
-    timeLine.to('#icon-weather', animaSaida);
-    timeLine.to('#temperature', animaSaida, 0.1);
-    timeLine.to('#local', animaSaida, 0.2);
-    timeLine.to('footer', animaSaida, 0.3);
+function fadeOut(value) {
+    // Removendo animações complexas por enquanto
+    elCard.style.opacity = 0;
+    elCard.style.transition = 'opacity 0.4s ease-in-out';
+    
+    // Quando a animação acabar (esconde a card), carrega as novas informações
+    setTimeout(() => loadInformation(value), 400);  // Espera a animação terminar para carregar as informações
 }
 
-
-
-document.querySelector('form').addEventListener('submit', heandleSubmit)
-
-
+// Lida com o envio do formulário
+document.querySelector('form').addEventListener('submit', handleSubmit);
