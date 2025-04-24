@@ -18,7 +18,7 @@ This is my Weather Forecast website built with HTML, CSS, and JavaScript, using 
 ## 🛠 How to Run Locally  
 1. Clone the repository:  
 ```bash
-git clone https://github.com/Dexzn08/weather-app.git
+git clone https://github.com/miguel-lamazares/BROKENprevisao.git
 ```
 2. Open the index.html file in your browser.
 Done! 🌈
