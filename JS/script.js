@@ -36,8 +36,8 @@ function loadInformation(value) {
         elSpeedWind.innerHTML = data.wind.speed + ' km/h';
 
         // Ajustando o ícone do clima
-        const icon = data.weather[0].main.toLocaleLowerCase();
-        const src = `./IMG/meu-saco.com/${icon}.png`;
+        const iconCode = data.weather[0].icon;
+        const src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
         elIconWeather.setAttribute('src', src);
         
         // Removendo animação por enquanto para simplificar

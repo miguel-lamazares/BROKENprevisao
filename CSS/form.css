@@ -4,11 +4,12 @@
         column-gap: 20px;
     }
 
-    form i, form button{
+    form i,
+    form button {
         font-size: 22px;
     }
 
-    form div { 
+    form div {
         flex: 1;
 
         display: flex;
@@ -18,21 +19,28 @@
         padding: 8px;
         border-radius: 8px;
         border: 1px solid var(--main-color);
+        transition: all 0.3s ease;
     }
 
     form div input {
         background: transparent;
         border: 0;
         outline: none;
-        
+
         width: 100%;
         font-size: 18px;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.5px; 
+    transition: all 0.3s ease; 
     }
 
     form div input::placeholder {
-    color: rgba(255, 255, 255, 0.8);
+        color: rgba(255, 255, 255, 0.8);
+        transition: color 0.3s ease;
 
+    }
+    
+    form div input:focus::placeholder {
+        color: rgba(255, 255, 255, 0.5);
     }
 
     form button {
@@ -42,10 +50,16 @@
         background: transparent;
         border-radius: 8px;
         border: 1px solid var(--main-color);
-    
+
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease; 
+    }
 
+
+    form button:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);   
     }

@@ -4,19 +4,21 @@ main {
 }
 
 #icon-weather {
-    width: 225px;
+    width: 250px;
     height: auto;
 
 }
 
 #temperature {
     font-size: 100px;
-    line-height: 0.8px;
+    line-height: 1.2px;
     margin-top: 8px;
+   
 }
 
 #local {
     font-size: 36px;
     line-height: 1;
     font-weight: 600;
+
 }

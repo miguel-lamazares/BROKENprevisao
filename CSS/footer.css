@@ -19,7 +19,7 @@ footer {
 
 .block div {
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;  
 }
 
 .block div strong {

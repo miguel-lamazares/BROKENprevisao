@@ -31,10 +31,12 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    z-index: -1;
 }
 .card {
     width: 500px;
-    height: 110px;
+    min-width: 200px;
+    height: 114px;
 
     overflow: hidden;
    
@@ -64,3 +66,4 @@ body {
     font-weight: 600;
     font-family: 'Special Gothic Condensed One', sans-serif;
 }
+
